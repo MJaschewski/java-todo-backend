@@ -1,18 +1,37 @@
+
 .ToDoBoardWrapper{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 1000px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    justify-items: auto;
 }
 
 .OpenToDosWrapper {
+    justify-content: flex-start;
+    justify-items: flex-start;
     width: 300px;
+    display: flex;
+    flex-direction: column;
 }
 
 .IN_PROGRESSToDosWrapper{
+    justify-content: flex-start;
+    justify-items: flex-start;
     width: 300px;
+    display: flex;
+    flex-direction: column;
 }
 
+
 .DONEToDosWrapper{
+    justify-content: flex-start;
+    justify-items: flex-start;
     width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.ToDoBoardWrapper{
+    width: 280px;
 }

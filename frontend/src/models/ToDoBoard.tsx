@@ -1,6 +1,7 @@
 import React from 'react';
 import {TodoType} from "./TodoType";
 import TodoCard from "./TodoCard";
+import './ModelStyles.css'
 type Props = {
     todos:TodoType[]
     setView:(id:string)=>void
