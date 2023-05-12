@@ -54,18 +54,17 @@ function App() {
 
   return (
       <div className="App">
-
-      {(viewBoard === "")
-      ? <div className="BoardWrapper">
-              <InputButton getToDos={getToDos} />
-              <ToDoBoard todos={toDos} setView={setView} view={viewBoard} getTodos={getToDos}/>
-        </div>
-      :<div className ="ToDoDetailsWrapper">
-              <TodoCard todo={todoByID} setView={setView} view={viewBoard} getTodos={getToDos}/>
-      </div>
-
-      }
-
+          {(viewBoard === "")
+          ?
+              <div className="BoardWrapper">
+                  <InputButton getToDos={getToDos} />
+                  <ToDoBoard todos={toDos} setView={setView} view={viewBoard} getTodos={getToDos}/>
+            </div>
+          :
+              <div className ="ToDoDetailsWrapper">
+                  <TodoCard todo={todoByID} setView={setView} view={viewBoard} getTodos={getToDos}/>
+            </div>
+          }
       </div>
   );
 }

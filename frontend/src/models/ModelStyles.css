@@ -1,0 +1,18 @@
+.ToDoBoardWrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 1000px;
+}
+
+.OpenToDosWrapper {
+    width: 300px;
+}
+
+.IN_PROGRESSToDosWrapper{
+    width: 300px;
+}
+
+.DONEToDosWrapper{
+    width: 300px;
+}

@@ -9,7 +9,8 @@ type Props = {
 }
 function ToDoBoard(props:Props) {
     return (
-        <div>
+        <div className="ToDoBoardWrapper">
+
             <div className="OpenToDosWrapper">
                 <h2>OPEN</h2>
                 {

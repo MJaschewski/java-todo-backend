@@ -52,12 +52,12 @@ function TodoCard(props:Props) {
     }
 
     return (
-        <div>
+        <div className="ToDoWrapper">
             <p>
                 {props.todo.description}
             </p>
             {props.view === ""
-                ?<div>
+                ?<div className="ToDoBoardWrapper">
                     <DetailsButton id={props.todo.id} setView={props.setView}/>
                     {props.todo.status === "OPEN"
                         ?   <button onClick={()=>openToIn_progress(props.todo)}> Advance </button>
@@ -67,7 +67,7 @@ function TodoCard(props:Props) {
 
                     }
                 </div>
-                : <div>
+                : <div className="ToDoDetailWrapper">
                     <button onClick={()=>props.setView("")}>View Board</button>
                     <EditToDoButton  oldTodo={props.todo} setView={props.setView}/>
                 </div>
