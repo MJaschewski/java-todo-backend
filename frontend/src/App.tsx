@@ -13,6 +13,12 @@ function App() {
 
     const [toDos,setToDos] = useState<TodoType[]>([])
 
+    const [viewBoard,setViewBoard] =useState("");
+
+    function setView(id:string){
+        setViewBoard(id);
+    }
+
     function getToDos() {
         axios.get("api/todo")
             .then(response => {
@@ -29,15 +35,20 @@ function App() {
     },[])
 
   return (
+      <div className="App">
 
-        <div className="App">
-
-            <InputButton getToDos={getToDos} />
-
-            <ToDoBoard todos={toDos}/>
-
-
+      {(viewBoard === "")
+      ? <div className="BoardWrapper">
+              <InputButton getToDos={getToDos} />
+              <ToDoBoard todos={toDos} setView={setViewBoard} view={viewBoard}/>
         </div>
+      :<div className ="ToDoDetailsWrapper">
+               <TodoCard Todo={toDos.filter(todo => todo.id===viewBoard)[0]} setView={setView} view={viewBoard}/>
+      </div>
+
+      }
+
+      </div>
   );
 }
 

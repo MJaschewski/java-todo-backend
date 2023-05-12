@@ -3,6 +3,8 @@ import {TodoType} from "./TodoType";
 import TodoCard from "./TodoCard";
 type Props = {
     todos:TodoType[]
+    setView:(id:string)=>void
+    view:string
 }
 function ToDoBoard(props:Props) {
     return (
@@ -12,7 +14,7 @@ function ToDoBoard(props:Props) {
                 {
                     props.todos.map( (todo:TodoType) =>  {
                         if(todo.status==="OPEN") {
-                            return <TodoCard Todo={todo}/>
+                            return <TodoCard Todo={todo} setView={props.setView} view={props.view}/>
                         }
                     })
                 }
@@ -23,7 +25,7 @@ function ToDoBoard(props:Props) {
                 {
                     props.todos.map( (todo:TodoType) =>  {
                         if(todo.status==="IN_PROGRESS") {
-                            return <TodoCard Todo={todo}/>
+                            return <TodoCard Todo={todo} setView={props.setView} view={props.view}/>
                         }
                     })
                 }
@@ -34,7 +36,7 @@ function ToDoBoard(props:Props) {
                 {
                     props.todos.map( (todo:TodoType) =>  {
                         if(todo.status==="DONE") {
-                            return <TodoCard Todo={todo}/>
+                            return <TodoCard Todo={todo} setView={props.setView} view={props.view}/>
                         }
                     })
                 }
