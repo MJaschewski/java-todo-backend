@@ -11,12 +11,30 @@ import ToDoBoard from "./models/ToDoBoard";
 
 function App() {
 
-    const [toDos,setToDos] = useState<TodoType[]>([])
 
+    const [toDos,setToDos] = useState<TodoType[]>([])
     const [viewBoard,setViewBoard] =useState("");
+    const [todoByID,setTodoByID] = useState<TodoType>({description: "", id: "", status: ""});
+
+
 
     function setView(id:string){
-        setViewBoard(id);
+        if(id===""){
+            getToDos();
+            setViewBoard("");
+        }
+        else  {
+            getToDoById(id);
+            setViewBoard(id);
+        }
+    }
+
+    function getToDoById(id:string){
+        axios.get("api/todo/" + id)
+            .then(response => {
+                setViewBoard(id)
+                setTodoByID(response.data)
+            })
     }
 
     function getToDos() {
@@ -40,10 +58,10 @@ function App() {
       {(viewBoard === "")
       ? <div className="BoardWrapper">
               <InputButton getToDos={getToDos} />
-              <ToDoBoard todos={toDos} setView={setViewBoard} view={viewBoard}/>
+              <ToDoBoard todos={toDos} setView={setView} view={viewBoard} getTodos={getToDos}/>
         </div>
       :<div className ="ToDoDetailsWrapper">
-               <TodoCard Todo={toDos.filter(todo => todo.id===viewBoard)[0]} setView={setView} view={viewBoard}/>
+              <TodoCard todo={todoByID} setView={setView} view={viewBoard} getTodos={getToDos}/>
       </div>
 
       }

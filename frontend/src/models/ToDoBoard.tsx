@@ -4,6 +4,7 @@ import TodoCard from "./TodoCard";
 type Props = {
     todos:TodoType[]
     setView:(id:string)=>void
+    getTodos:()=>void
     view:string
 }
 function ToDoBoard(props:Props) {
@@ -12,9 +13,9 @@ function ToDoBoard(props:Props) {
             <div className="OpenToDosWrapper">
                 <h2>OPEN</h2>
                 {
-                    props.todos.map( (todo:TodoType) =>  {
-                        if(todo.status==="OPEN") {
-                            return <TodoCard Todo={todo} setView={props.setView} view={props.view}/>
+                    props.todos.map( (openTodo:TodoType) =>  {
+                        if(openTodo.status==="OPEN") {
+                            return <TodoCard todo={openTodo} setView={props.setView} view={props.view} getTodos={props.getTodos}/>
                         }
                     })
                 }
@@ -23,9 +24,9 @@ function ToDoBoard(props:Props) {
             <div className="IN_PROGRESSToDosWrapper">
                 <h2>IN_PROGRESS</h2>
                 {
-                    props.todos.map( (todo:TodoType) =>  {
-                        if(todo.status==="IN_PROGRESS") {
-                            return <TodoCard Todo={todo} setView={props.setView} view={props.view}/>
+                    props.todos.map( (inPTodo:TodoType) =>  {
+                        if(inPTodo.status==="IN_PROGRESS") {
+                            return <TodoCard todo={inPTodo} setView={props.setView} view={props.view} getTodos={props.getTodos}/>
                         }
                     })
                 }
@@ -34,9 +35,9 @@ function ToDoBoard(props:Props) {
             <div className="DONEToDosWrapper">
                 <h2>DONE</h2>
                 {
-                    props.todos.map( (todo:TodoType) =>  {
-                        if(todo.status==="DONE") {
-                            return <TodoCard Todo={todo} setView={props.setView} view={props.view}/>
+                    props.todos.map( (doneTodo:TodoType) =>  {
+                        if(doneTodo.status==="DONE") {
+                            return <TodoCard todo={doneTodo} setView={props.setView} view={props.view} getTodos={props.getTodos}/>
                         }
                     })
                 }
